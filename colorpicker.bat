@@ -1,16 +1,10 @@
 @echo off
-
 SETLOCAL EnableDelayedExpansion
-
 for /f "Tokens=* Delims=" %%x in ('type %0') do (
     if "!EXIT_FOUND!"=="true" (set COMMAND=!COMMAND!%%x)    
     if "%%x"=="exit" (set EXIT_FOUND=true)    
 )
-
 powershell -windowstyle hidden -command %COMMAND% >NUL
-
-rem *** after following line "exit" goes powershell script
-
 exit
 
 Add-Type -AssemblyName System.Windows.Forms, System.Drawing;
